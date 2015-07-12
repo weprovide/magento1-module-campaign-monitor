@@ -28,6 +28,16 @@
             </campaignmonitor>
         </models>
         <events>
+            <controller_front_init_before>
+                <observers>
+                    <controller_front_init_before_handler>
+                        <type>model</type>
+                        <class>campaignmonitor/autoload</class>
+                        <method>controllerFrontInitBefore</method>
+                        <args></args>
+                    </controller_front_init_before_handler>
+                </observers>
+            </controller_front_init_before>
             <newsletter_subscriber_save_commit_after>
                 <observers>
                     <newsletter_subscriber_save_commit_after_handler>
