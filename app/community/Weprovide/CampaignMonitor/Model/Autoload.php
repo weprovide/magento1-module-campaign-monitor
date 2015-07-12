@@ -21,7 +21,9 @@ class Weprovide_CampaignMonitor_Model_Autoload
      */
     static function init()
     {
-        require_once(Mage::getBaseDir('lib') . '/CampaignMonitor/csrest_subscribers.php');
+        $campaignmonitorLibrary = Mage::getBaseDir('lib') . '/CampaignMonitor/';
+        require_once($campaignmonitorLibrary . 'csrest_subscribers.php');
+        require_once($campaignmonitorLibrary . 'csrest_clients.php');
     }
 
 }
