@@ -32,7 +32,7 @@
                 <observers>
                     <controller_front_init_before_handler>
                         <type>model</type>
-                        <class>campaignmonitor/autoload</class>
+                        <class>campaignmonitor/observer_autoload</class>
                         <method>controllerFrontInitBefore</method>
                         <args></args>
                     </controller_front_init_before_handler>
@@ -42,7 +42,7 @@
                 <observers>
                     <newsletter_subscriber_save_commit_after_handler>
                         <type>model</type>
-                        <class>campaignmonitor/observer</class>
+                        <class>campaignmonitor/observer_subscribe</class>
                         <method>save</method>
                         <args></args>
                     </newsletter_subscriber_save_commit_after_handler>
@@ -52,12 +52,22 @@
                 <observers>
                     <newsletter_subscriber_delete_after_handler>
                         <type>model</type>
-                        <class>campaignmonitor/observer</class>
+                        <class>campaignmonitor/observer_subscribe</class>
                         <method>delete</method>
                         <args></args>
                     </newsletter_subscriber_delete_after_handler>
                 </observers>
             </newsletter_subscriber_delete_after>
+            <admin_system_config_changed_section_campaignmonitor>
+                <observers>
+                    <admin_system_config_changed_section_campaignmonitor_handler>
+                        <type>model</type>
+                        <class>campaignmonitor/observer_config</class>
+                        <method>initDefaultCustomFields</method>
+                        <args></args>
+                    </admin_system_config_changed_section_campaignmonitor_handler>
+                </observers>
+            </admin_system_config_changed_section_campaignmonitor>
         </events>
     </global>
     <admin>
