@@ -1,4 +1,3 @@
-# Magento_Campaign_Monitor
 Magento Campaign Monitor Extension
 ========================
 Keep your Magento subscribers in Sync with Campaign Monitor, supports multiple lists.
