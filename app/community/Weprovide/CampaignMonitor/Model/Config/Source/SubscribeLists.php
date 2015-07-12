@@ -14,7 +14,7 @@ class Weprovide_CampaignMonitor_Model_Config_Source_SubscribeLists
      */
     public function toOptionArray()
     {
-        $lists = Mage::getModel('campaignmonitor/clientsapi')->getLists();
+        $lists = Mage::getModel('campaignmonitor/api_clients')->getLists();
 
         $options = array();
 
