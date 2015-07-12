@@ -12,6 +12,8 @@ class Weprovide_CampaignMonitor_Model_Setting
     const XML_API_KEY = 'campaignmonitor/configuration/api_key';
     const XML_CLIENT_ID = 'campaignmonitor/configuration/client_id';
     const XML_SUBSCRIBE_LIST_API_KEY = 'campaignmonitor/configuration/subscribe_list_api_key';
+    const CUSTOM_FIELD_SUBSCRIBER_ID = 'MagentoSubscriberId';
+    const CUSTOM_FIELD_SUBSCRIBER_CONFIRM_CODE = 'MagentoSubscriberConfirmCode';
 
     /**
      * @param int $storeId
