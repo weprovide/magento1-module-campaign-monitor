@@ -6,7 +6,7 @@
  * @author Tim Neutkens <tim@weprovide.com>
  * @copyright Copyright (c) 2015, We/Provide http://www.weprovide.com
  */
-class Weprovide_CampaignMonitor_Model_ClientsApi
+class Weprovide_CampaignMonitor_Model_Api_Clients
 {
     /**
      * @param int $storeId

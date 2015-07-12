@@ -6,7 +6,7 @@
  * @author Lex Beelen <lex@weprovide.com>
  * @copyright Copyright (c) 2015, We/Provide http://www.weprovide.com
  */
-class Weprovide_CampaignMonitor_Model_Api
+class Weprovide_CampaignMonitor_Model_Api_Subscribers
 {
     /**
      * @param int $storeId
@@ -32,14 +32,22 @@ class Weprovide_CampaignMonitor_Model_Api
         $data = array();
         $data['EmailAddress'] = $email;
 
+        $data['CustomFields'][] = array(
+            'key' => Weprovide_CampaignMonitor_Model_Setting::CUSTOM_FIELD_SUBSCRIBER_ID,
+            'Value' => $subscribeId
+        );
+
+        $data['CustomFields'][] = array(
+            'key' => Weprovide_CampaignMonitor_Model_Setting::CUSTOM_FIELD_SUBSCRIBER_CONFIRM_CODE,
+            'Value' => $code
+        );
+
         if($customerId){
             $customer = Mage::getModel('customer/customer')->load($customerId);
             if($customer->getEntityId()){
                 $data['Name'] = $customer->getFirstname() . ' ' . $customer->getLastname();
             }
         }
-
-        $data['Resubscribe'] = true;
 
         $result = $this->_api($storeId)->add($data);
         if(!$result->was_successful()) {
