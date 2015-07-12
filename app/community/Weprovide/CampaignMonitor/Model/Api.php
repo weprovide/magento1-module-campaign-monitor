@@ -1,11 +1,6 @@
 <?php
 
 /**
- * Load subscriber CampaignMonitor Library
- */
-require_once(Mage::getBaseDir('lib') . '/CampaignMonitor/csrest_subscribers.php');
-
-/**
  * Class Weprovide_CampaignMonitor_Model_Api
  *
  * @author Lex Beelen <lex@weprovide.com>
