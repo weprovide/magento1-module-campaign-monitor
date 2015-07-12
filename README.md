@@ -20,8 +20,8 @@ Contribution
 Any contributions are appreciated. The best way to contribute code is to open a
 [pull request on GitHub](https://help.github.com/articles/using-pull-requests).
 
-Developer
----------
+Developers
+----------
 Lex Beelen / [http://www.lexperts.nl](http://www.lexperts.nl) / [https://github.com/lexperts](https://github.com/lexperts)
 
 Tim Neutkens / [http://www.timneutkens.nl](http://www.timneutkens.nl) / [https://github.com/timneutkens1](https://github.com/timneutkens1)
