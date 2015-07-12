@@ -12,12 +12,13 @@ Coming soon
 
 Support
 -------
-If you have any issues with this extension, open an issue on GitHub (see URL above)
+If you have any issues with this extension, [open an issue on GitHub](https://github.com/weprovide/Magento_Campaign_Monitor/issues).
 
 Contribution
 ------------
 Any contributions are appreciated. The best way to contribute code is to open a
-[pull request on GitHub](https://help.github.com/articles/using-pull-requests).
+[pull request on GitHub](https://github.com/weprovide/Magento_Campaign_Monitor/pulls).
+Want to know how? See: [pull request on GitHub](https://help.github.com/articles/using-pull-requests).
 
 Developers
 ----------
@@ -37,4 +38,4 @@ Licence
 
 Copyright
 ---------
-(c) 2015 We/Provide
+&copy; 2015 We/Provide
