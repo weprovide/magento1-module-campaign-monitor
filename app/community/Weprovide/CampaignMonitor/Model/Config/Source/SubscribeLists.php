@@ -39,7 +39,7 @@ class Weprovide_CampaignMonitor_Model_Config_Source_SubscribeLists
         } else {
             $options[] = array(
                 'value' => '',
-                'label' => Mage::Helper('campaignmonitor')->__('Please enter a valid API KEY + CLIENT ID')
+                'label' => Mage::Helper('campaignmonitor')->__('Please save a valid API KEY + CLIENT ID')
             );
         }
 
