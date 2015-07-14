@@ -48,14 +48,24 @@
             </campaignmonitor_read>
         </resources>
         <events>
-            <controller_front_init_before>
+            <default>
                 <observers>
-                    <controller_front_init_before_handler>
+                    <default_campaign_monitor_handler>
                         <type>model</type>
                         <class>campaignmonitor/observer_autoload</class>
-                        <method>controllerFrontInitBefore</method>
+                        <method>autoLoad</method>
                         <args></args>
-                    </controller_front_init_before_handler>
+                    </default_campaign_monitor_handler>
+                </observers>
+            </default>
+            <controller_front_init_before>
+                <observers>
+                    <controller_front_init_before_campaign_monitor_handler>
+                        <type>model</type>
+                        <class>campaignmonitor/observer_autoload</class>
+                        <method>autoLoad</method>
+                        <args></args>
+                    </controller_front_init_before_campaign_monitor_handler>
                 </observers>
             </controller_front_init_before>
             <newsletter_subscriber_save_commit_after>
