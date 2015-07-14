@@ -9,9 +9,9 @@
 class Weprovide_CampaignMonitor_Model_Observer_Autoload
 {
     /**
-     * controllerFrontInitBefore
+     * autoLoad
      */
-    public function controllerFrontInitBefore()
+    public function autoLoad()
     {
         self::init();
     }
@@ -21,10 +21,10 @@ class Weprovide_CampaignMonitor_Model_Observer_Autoload
      */
     static function init()
     {
-        $campaignmonitorLibrary = Mage::getBaseDir('lib') . '/CampaignMonitor/';
-        require_once($campaignmonitorLibrary . 'csrest_subscribers.php');
-        require_once($campaignmonitorLibrary . 'csrest_clients.php');
-        require_once($campaignmonitorLibrary . 'csrest_lists.php');
+        $campaignMonitorLibrary = Mage::getBaseDir('lib') . '/CampaignMonitor/';
+        require_once($campaignMonitorLibrary . 'csrest_subscribers.php');
+        require_once($campaignMonitorLibrary . 'csrest_clients.php');
+        require_once($campaignMonitorLibrary . 'csrest_lists.php');
     }
 
 }
