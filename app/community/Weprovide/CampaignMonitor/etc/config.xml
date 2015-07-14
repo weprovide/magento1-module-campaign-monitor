@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Weprovide_CampaignMonitor>
-            <version>0.1.0</version>
+            <version>0.2.0</version>
         </Weprovide_CampaignMonitor>
     </modules>
     <frontend>
@@ -27,6 +27,26 @@
                 <class>Weprovide_CampaignMonitor_Model</class>
             </campaignmonitor>
         </models>
+        <resources>
+            <campaignmonitor_setup>
+                <setup>
+                    <module>Weprovide_CampaignMonitor</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </campaignmonitor_setup>
+            <campaignmonitor_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </campaignmonitor_write>
+            <campaignmonitor_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </campaignmonitor_read>
+        </resources>
         <events>
             <controller_front_init_before>
                 <observers>
@@ -70,6 +90,14 @@
             </admin_system_config_changed_section_campaignmonitor>
         </events>
     </global>
+    <crontab>
+        <jobs>
+            <campaignmonitor_import>
+                <schedule><cron_expr>30 23 * * *</cron_expr></schedule>
+                <run><model>campaignmonitor/cron::import</model></run>
+            </campaignmonitor_import>
+        </jobs>
+    </crontab>
     <admin>
         <routers>
             <campaignmonitor>

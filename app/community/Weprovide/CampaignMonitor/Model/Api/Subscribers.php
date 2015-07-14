@@ -89,4 +89,54 @@ class Weprovide_CampaignMonitor_Model_Api_Subscribers
         }
     }
 
+    /**
+     * @param array $collection
+     * @param int $storeId
+     * @param $reSubscribe
+     * @return bool
+     * @throws Exception
+     */
+    public function import($collection = array(), $storeId = 0, $reSubscribe)
+    {
+        if ($collection->count() == 0) return false;
+        $subscribers = array();
+        $subscriberIds = array();
+
+        foreach($collection as $item)
+        {
+            $subscriber = array();
+            $subscriber['EmailAddress'] = $item->getSubscriberEmail();
+
+            if ($item->getCustomerId()) {
+                $subscriber['Name'] = $item->getCustomerFirstname() . ' ' . $item->getCustomerLastname();
+            }
+
+            $subscriber['CustomFields'][] = array(
+                'key' => Weprovide_CampaignMonitor_Model_Setting::CUSTOM_FIELD_SUBSCRIBER_ID,
+                'Value' => $item->getSubscriberId()
+            );
+
+            $subscriber['CustomFields'][] = array(
+                'key' => Weprovide_CampaignMonitor_Model_Setting::CUSTOM_FIELD_SUBSCRIBER_CONFIRM_CODE,
+                'Value' => $item->getSubscriberConfirmCode()
+            );
+
+            $subscribers[] = $subscriber;
+            $subscriberIds[] = $item->getSubscriberId();
+        }
+
+        $resource = Mage::getSingleton('core/resource');
+        $writeConnection = $resource->getConnection('core_write');
+        $table = $resource->getTableName('newsletter/subscriber');
+        $query = "UPDATE {$table} SET campaign_monitor_imported = 1 WHERE subscriber_id IN ('" . implode("','", $subscriberIds) . "')";
+        $writeConnection->query($query);
+
+        if(!empty($subscribers)) {
+            $result = $this->_api($storeId)->import($subscribers, $reSubscribe);
+            if (!$result->was_successful()) {
+                throw new Exception($result->response->Message);
+            }
+        }
+    }
+
 }
