@@ -8,20 +8,31 @@
  */
 class Weprovide_CampaignMonitor_Model_Observer_Subscribe
 {
+
     /**
      * @param Varien_Event_Observer $observer
+     * @return $this
      */
     public function save(Varien_Event_Observer $observer)
     {
+        //Avoid event looping
+        if (Mage::registry('newsletter_save_dispatched') == 1){
+            return $this;
+        }
+
         $event = $observer->getEvent();
         $subscriber = $event->getDataObject();
 
-        if(Mage::getModel('campaignmonitor/setting')->isEnabled($subscriber->getStoreId()))
-        {
+        if (Mage::getModel('campaignmonitor/setting')->isEnabled($subscriber->getStoreId())) {
             switch ($subscriber->getSubscriberStatus()) {
                 case 1:
                     try {
                         Mage::getModel('campaignmonitor/api_subscribers')->subscribe($subscriber->getSubscriberEmail(), $subscriber->getSubscriberId(), $subscriber->getSubscriberConfirmCode(), $subscriber->getCustomerId(), $subscriber->getStoreId());
+
+                        //Avoid event looping
+                        Mage::register('newsletter_save_dispatched', 1);
+                        $subscriber->setData('campaign_monitor_imported', 1);
+                        $subscriber->save();
                     } catch (Exception $e) {
                         Mage::log($e->getMessage(), NULL, 'campaignmonitor.log');
                     }
