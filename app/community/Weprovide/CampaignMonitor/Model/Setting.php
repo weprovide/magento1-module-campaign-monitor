@@ -14,7 +14,9 @@ class Weprovide_CampaignMonitor_Model_Setting
     const XML_SUBSCRIBE_LIST_API_KEY = 'campaignmonitor/configuration/subscribe_list_api_key';
     const CUSTOM_FIELD_SUBSCRIBER_ID = 'MagentoSubscriberId';
     const CUSTOM_FIELD_SUBSCRIBER_CONFIRM_CODE = 'MagentoSubscriberConfirmCode';
-
+    const IMPORT_SUBSCRIBER_LIMIT = 1000;
+    const MEMORY_LIMIT = 2048;
+    
     /**
      * @param int $storeId
      * @return mixed
@@ -50,5 +52,6 @@ class Weprovide_CampaignMonitor_Model_Setting
     {
         return Mage::getStoreConfig(self::XML_SUBSCRIBE_LIST_API_KEY, $storeId);
     }
+
 }
 
