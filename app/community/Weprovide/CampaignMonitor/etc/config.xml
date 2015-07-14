@@ -103,7 +103,7 @@
     <crontab>
         <jobs>
             <campaignmonitor_import>
-                <schedule><cron_expr>30 23 * * *</cron_expr></schedule>
+                <schedule><cron_expr>*/5 * * * *</cron_expr></schedule>
                 <run><model>campaignmonitor/cron::import</model></run>
             </campaignmonitor_import>
         </jobs>
