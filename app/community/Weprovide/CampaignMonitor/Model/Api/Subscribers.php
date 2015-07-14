@@ -49,6 +49,8 @@ class Weprovide_CampaignMonitor_Model_Api_Subscribers
             }
         }
 
+        $data['Resubscribe'] = true;
+
         $result = $this->_api($storeId)->add($data);
         if(!$result->was_successful()) {
             throw new Exception($result->response->Message);
