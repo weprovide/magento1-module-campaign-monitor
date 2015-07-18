@@ -1,2 +1,8 @@
-app/code/community/Weprovide/CampaignMonitor/* app/code/community/Weprovide/CampaignMonitor
-lib/CampaignMonitor/* lib/CampaignMonitor
+#module config
+app/etc/modules/Weprovide_Campaignmonitor.xml app/etc/modules/Weprovide_Campaignmonitor.xml
+
+#module code
+app/code/community/Weprovide/CampaignMonitor app/code/community/Weprovide/CampaignMonitor
+
+#module libraries
+lib/CampaignMonitor lib/CampaignMonitor
