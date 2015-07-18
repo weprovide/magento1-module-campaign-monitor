@@ -1,2 +1,2 @@
-app/* app
-lib/* lib
+app/code/community/Weprovide/CampaignMonitor/* app/code/community/Weprovide/CampaignMonitor
+lib/CampaignMonitor/* lib/CampaignMonitor
