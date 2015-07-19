@@ -10,7 +10,7 @@ class Weprovide_CampaignMonitor_Model_Api_Lists
 {
     /**
      * @param int $storeId
-     * @return CS_REST_Subscribers
+     * @return CS_REST_Lists
      */
     protected function _api($storeId = 0){
         return new CS_REST_Lists(Mage::getModel('campaignmonitor/setting')->getSubscribeListApiKey($storeId),  array('api_key' => Mage::getModel('campaignmonitor/setting')->getApiKey($storeId)));
