@@ -35,6 +35,14 @@ Licence
 -------
 [OSL - Open Software Licence 3.0](http://opensource.org/licenses/osl-3.0.php)
 
+Authors
+-------
+* Lex Beelen
+* [Follow me on github!](https://github.com/lexperts)
+
+* Tim Neutkens
+* [Follow me on github!](https://github.com/timneutkens1)
+
 Copyright
 ---------
 &copy; 2015 We/Provide
