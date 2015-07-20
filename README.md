@@ -24,17 +24,12 @@ Any contributions are appreciated. The best way to contribute code is to open a
 [pull request on GitHub](https://github.com/weprovide/Magento_Campaign_Monitor/pulls).
 Want to know how? See: [pull request on GitHub](https://help.github.com/articles/using-pull-requests).
 
-Developers
+Company
 ----------
-Lex Beelen / [http://www.lexperts.nl](http://www.lexperts.nl) / [https://github.com/lexperts](https://github.com/lexperts)
-
-Tim Neutkens / [http://www.timneutkens.nl](http://www.timneutkens.nl) / [https://github.com/timneutkens1](https://github.com/timneutkens1)
-
 [http://www.weprovide.com](http://www.weprovide.com)
-
 [http://www.facebook.com/weprovide](http://www.facebook.com/weprovide)
-
 [@weprovide](https://twitter.com/weprovide)
+
 
 Licence
 -------
