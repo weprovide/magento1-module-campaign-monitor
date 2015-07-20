@@ -1,4 +1,4 @@
-<a href="http://www.weprovide.com">![We/Provide](https://avatars1.githubusercontent.com/u/13269842?v=3&s=240)</a>
+<a href="http://www.weprovide.com">![We/Provide](https://avatars1.githubusercontent.com/u/13269842?v=3&s=120)</a>
 
 
 Magento Campaign Monitor Extension
