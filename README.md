@@ -25,10 +25,10 @@ Any contributions are appreciated. The best way to contribute code is to open a
 Want to know how? See: [pull request on GitHub](https://help.github.com/articles/using-pull-requests).
 
 Company
-----------
-[http://www.weprovide.com](http://www.weprovide.com)
-[http://www.facebook.com/weprovide](http://www.facebook.com/weprovide)
-[@weprovide](https://twitter.com/weprovide)
+-------
+* [http://www.weprovide.com](http://www.weprovide.com)
+* [http://www.facebook.com/weprovide](http://www.facebook.com/weprovide)
+* [@weprovide](https://twitter.com/weprovide)
 
 
 Licence
