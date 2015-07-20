@@ -8,7 +8,8 @@ Compatibility
 
 Installation Instructions
 -------------------------
-Coming soon
+Install this module using [modman](https://github.com/colinmollenhour/modman):
+* `modman clone git://github.com/weprovide/Magento_Campaign_Monitor.git`
 
 Support
 -------
