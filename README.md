@@ -1,3 +1,6 @@
+<a href="http://www.weprovide.com">![We/Provide](https://avatars1.githubusercontent.com/u/13269842?v=3&s=240)</a>
+
+
 Magento Campaign Monitor Extension
 ========================
 Keep your Magento subscribers in Sync with Campaign Monitor, supports multiple lists.
