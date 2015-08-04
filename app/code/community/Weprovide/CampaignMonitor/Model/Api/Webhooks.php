@@ -39,7 +39,7 @@ class Weprovide_CampaignMonitor_Model_Api_Webhooks extends Weprovide_CampaignMon
     /**
      * Create a new webhook
      * @param $listId       |   Campaign monitor list id
-     * @param $url          |   Url that Campaign monitor posts to
+     * @param $url          |   Url that Campaign monitor POST's to
      * @param int $storeId  |   Magento store ID to get the api configuration
      * @param array $types  |   Hooks types. Should be a combination of 'subscribe', 'update' and 'deactivate'
      * @return CS_REST_Wrapper_Result
@@ -160,7 +160,7 @@ class Weprovide_CampaignMonitor_Model_Api_Webhooks extends Weprovide_CampaignMon
     }
 
     /**
-     * Parse json
+     * Parse webhook json
      * @param $jsonData
      * @return mixed
      * @throws Exception
