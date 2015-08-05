@@ -45,7 +45,7 @@ class Weprovide_CampaignMonitor_Model_Api_Webhooks extends Weprovide_CampaignMon
      * @return CS_REST_Wrapper_Result
      * @throws Exception    |   Exception if api request fails
      */
-    public function createWebhook($listId, $url, $storeId = 0, $types = array('subscribe', 'update', 'deactivate', $payload = 'json'))
+    public function createWebhook($listId, $url, $storeId = 0, $types = array('subscribe', 'update', 'deactivate'), $payload = 'json')
     {
         $_api = $this->_listApi($listId, $storeId);
 
@@ -168,10 +168,10 @@ class Weprovide_CampaignMonitor_Model_Api_Webhooks extends Weprovide_CampaignMon
     public function parseJsonWebhook($jsonData)
     {
         $parsedData = Mage::helper('core')->jsonDecode($jsonData);
-        if(isset($parsedData->listId) && isset($parsedData->Events)) {
+        if(isset($parsedData['ListID']) && isset($parsedData['Events'])) {
             return $parsedData;
         } else {
-            throw new Exception('Webhook data not valid');
+            throw new Exception('Webhook data not valid: ' . $jsonData);
         }
     }
 
