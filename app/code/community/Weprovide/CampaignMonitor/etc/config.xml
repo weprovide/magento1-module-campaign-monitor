@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Weprovide_CampaignMonitor>
-            <version>0.2.0</version>
+            <version>0.2.1</version>
         </Weprovide_CampaignMonitor>
     </modules>
     <frontend>
@@ -96,6 +96,18 @@
                         <method>initDefaultCustomFields</method>
                         <args></args>
                     </admin_system_config_changed_section_campaignmonitor_handler>
+                    <admin_system_config_changed_section_campaignmonitor_unsubscribeurl_handler>
+                        <type>model</type>
+                        <class>campaignmonitor/observer_config</class>
+                        <method>setUnsubscribeUrl</method>
+                        <args></args>
+                    </admin_system_config_changed_section_campaignmonitor_unsubscribeurl_handler>
+                    <admin_system_config_changed_section_campaignmonitor_webhook_handler>
+                        <type>model</type>
+                        <class>campaignmonitor/observer_config</class>
+                        <method>createWebhook</method>
+                        <args></args>
+                    </admin_system_config_changed_section_campaignmonitor_webhook_handler>
                 </observers>
             </admin_system_config_changed_section_campaignmonitor>
         </events>
@@ -108,15 +120,4 @@
             </campaignmonitor_import>
         </jobs>
     </crontab>
-    <admin>
-        <routers>
-            <campaignmonitor>
-                <use>admin</use>
-                <args>
-                    <module>Weprovide_CampaignMonitor</module>
-                    <frontName>admin_campaignmonitor</frontName>
-                </args>
-            </campaignmonitor>
-        </routers>
-    </admin>
 </config>

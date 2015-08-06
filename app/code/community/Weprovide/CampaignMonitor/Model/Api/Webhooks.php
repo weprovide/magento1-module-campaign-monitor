@@ -39,13 +39,13 @@ class Weprovide_CampaignMonitor_Model_Api_Webhooks extends Weprovide_CampaignMon
     /**
      * Create a new webhook
      * @param $listId       |   Campaign monitor list id
-     * @param $url          |   Url that Campaign monitor posts to
+     * @param $url          |   Url that Campaign monitor POST's to
      * @param int $storeId  |   Magento store ID to get the api configuration
      * @param array $types  |   Hooks types. Should be a combination of 'subscribe', 'update' and 'deactivate'
      * @return CS_REST_Wrapper_Result
      * @throws Exception    |   Exception if api request fails
      */
-    public function createWebhook($listId, $url, $storeId = 0, $types = array('subscribe', 'update', 'deactivate', $payload = 'json'))
+    public function createWebhook($listId, $url, $storeId = 0, $types = array('subscribe', 'update', 'deactivate'), $payload = 'json')
     {
         $_api = $this->_listApi($listId, $storeId);
 
@@ -160,7 +160,33 @@ class Weprovide_CampaignMonitor_Model_Api_Webhooks extends Weprovide_CampaignMon
     }
 
     /**
-     * Parse json
+     * Check if webhook exists based on url
+     * @param $url
+     * @param $listId
+     * @param int $storeId
+     * @return bool
+     * @throws Exception
+     */
+    public function webhookExists($url, $listId, $storeId = 0)
+    {
+        $webhooks = $this->getWebhooks($listId, $storeId)->response;
+        if (isset($webhooks)) {
+            foreach ($webhooks as $webhook) {
+                if (isset($webhook->Url)) {
+                    if ($webhook->Url == $url) {
+                        return true;
+                    }
+                }
+            }
+        } else {
+            throw new Exception('Error loading webhooks');
+        }
+
+        return false;
+    }
+
+    /**
+     * Parse webhook json
      * @param $jsonData
      * @return mixed
      * @throws Exception
@@ -168,10 +194,10 @@ class Weprovide_CampaignMonitor_Model_Api_Webhooks extends Weprovide_CampaignMon
     public function parseJsonWebhook($jsonData)
     {
         $parsedData = Mage::helper('core')->jsonDecode($jsonData);
-        if(isset($parsedData->listId) && isset($parsedData->Events)) {
+        if(isset($parsedData['ListID']) && isset($parsedData['Events'])) {
             return $parsedData;
         } else {
-            throw new Exception('Webhook data not valid');
+            throw new Exception('Webhook data not valid: ' . $jsonData);
         }
     }
 

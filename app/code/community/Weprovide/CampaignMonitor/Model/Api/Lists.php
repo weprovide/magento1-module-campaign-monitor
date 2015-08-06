@@ -36,6 +36,43 @@ class Weprovide_CampaignMonitor_Model_Api_Lists
         if(!$result->was_successful()) {
             throw new Exception($result->response->Message);
         }
+
+        return $this;
     }
 
+    public function getList($listId, $storeId) {
+        $listApi = $this->_api($storeId);
+        $listApi->set_list_id($listId);
+
+        $result = $listApi->get();
+        if(!$result->was_successful()) {
+            throw new Exception($result->response->Message);
+        }
+
+        return $result;
+    }
+
+    public function setUnsubscribePage($listId, $storeId)
+    {
+        $listInfo = $this->getList($listId, $storeId)->response;
+        if(isset($listInfo)) {
+            $listApi = $this->_api($storeId);
+            $listApi->set_list_id($listId);
+            $listDetails = array(
+                'Title' => $listInfo->Title,
+                'UnsubscribePage' => Mage::getUrl('campaignmonitor/subscribers/unsubscribesuccess'),
+                'UnsubscribeSetting' => $listInfo->UnsubscribeSetting,
+                'ConfirmedOptIn' => $listInfo->ConfirmedOptIn,
+                'ConfirmationSuccessPage' => $listInfo->ConfirmationSuccessPage,
+                'AddUnsubscribesToSuppList' => $listInfo->AddUnsubscribesToSuppList,
+                'ScrubActiveWithSuppList' => $listInfo->ScrubActiveWithSuppList
+            );
+            $result = $listApi->update($listDetails);
+            if(!$result->was_successful()) {
+                throw new Exception($result->response->Message);
+            }
+        } else {
+            throw new Exception('Title not set');
+        }
+    }
 }
