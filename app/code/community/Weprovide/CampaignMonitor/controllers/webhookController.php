@@ -23,22 +23,12 @@ class Weprovide_CampaignMonitor_webhookController extends Mage_Core_Controller_F
                 foreach($events as $event) {
                     $eventType = $event['Type'];
                     $emailAddress = $event['EmailAddress'];
-                    $webhookSubscriberId = '';
-
-                    $customFields = $event['CustomFields'];
-                    if(isset($customFields)) {
-                        foreach($customFields as $customField) {
-                            if($customField['Key'] == 'MagentoSubscriberId') {
-                                $webhookSubscriberId = $customField['Value'];
-                            }
-                        }
-                    }
 
                     if(isset($eventType)) {
                         if($eventType == 'Deactivate') {
                             if(isset($emailAddress)) {
                                 $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($emailAddress);
-                                if($subscriber->isSubscribed() && $subscriber->getId() == $webhookSubscriberId) {
+                                if($subscriber->isSubscribed() && $subscriber->getId()) {
                                     $state = $event['State'];
                                     if(isset($state)) {
                                         $subscriber->setCampaignMonitorState($state);
