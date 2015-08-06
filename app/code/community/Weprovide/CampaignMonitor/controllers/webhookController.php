@@ -1,6 +1,6 @@
 <?php
 
-class Weprovide_CampaignMonitor_webhooksController extends Mage_Core_Controller_Front_Action
+class Weprovide_CampaignMonitor_webhookController extends Mage_Core_Controller_Front_Action
 {
     public function indexAction()
     {
@@ -63,26 +63,4 @@ class Weprovide_CampaignMonitor_webhooksController extends Mage_Core_Controller_
             }
         }
     }
-
-//    public function registerAction()
-//    {
-//        $listId = Mage::getModel('campaignmonitor/setting')->getSubscribeListApiKey();
-//        $webhookApi = Mage::getModel('campaignmonitor/api_webhooks');
-//        $webhookApi->createWebhook($listId, 'https://e956a2ec.ngrok.io/index.php/campaignmonitor/webhooks');
-//    }
-//
-//    public function getwebhooksAction()
-//    {
-//        $listId = Mage::getModel('campaignmonitor/setting')->getSubscribeListApiKey();
-//        $webhookApi = Mage::getModel('campaignmonitor/api_webhooks');
-//        echo '<pre>';
-//        print_r($webhookApi->getWebhooks($listId));
-//        echo '</pre>';
-//    }
-//
-//    public function removewebhookAction() {
-//        $listId = Mage::getModel('campaignmonitor/setting')->getSubscribeListApiKey();
-//        $webhookApi = Mage::getModel('campaignmonitor/api_webhooks');
-//        $webhookApi->deleteWebhook($listId,'6a4f5c91bea2323bc7252f88a56bae71');
-//    }
 }

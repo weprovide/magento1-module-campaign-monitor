@@ -160,6 +160,32 @@ class Weprovide_CampaignMonitor_Model_Api_Webhooks extends Weprovide_CampaignMon
     }
 
     /**
+     * Check if webhook exists based on url
+     * @param $url
+     * @param $listId
+     * @param int $storeId
+     * @return bool
+     * @throws Exception
+     */
+    public function webhookExists($url, $listId, $storeId = 0)
+    {
+        $webhooks = $this->getWebhooks($listId, $storeId)->response;
+        if (isset($webhooks)) {
+            foreach ($webhooks as $webhook) {
+                if (isset($webhook->Url)) {
+                    if ($webhook->Url == $url) {
+                        return true;
+                    }
+                }
+            }
+        } else {
+            throw new Exception('Error loading webhooks');
+        }
+
+        return false;
+    }
+
+    /**
      * Parse webhook json
      * @param $jsonData
      * @return mixed
