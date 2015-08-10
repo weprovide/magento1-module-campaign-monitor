@@ -31,6 +31,10 @@ class Weprovide_CampaignMonitor_Model_Observer_Config
 
     }
 
+    /**
+     * Set unsubscribe url on section save
+     * @param Varien_Event_Observer $observer
+     */
     public function setUnsubscribeUrl(Varien_Event_Observer $observer)
     {
         $storeId = Mage::getModel('core/store')->load($observer->getEvent()->getStore())->getId();
@@ -47,6 +51,10 @@ class Weprovide_CampaignMonitor_Model_Observer_Config
         }
     }
 
+    /**
+     * Create webhook on section save
+     * @param Varien_Event_Observer $observer
+     */
     public function createWebhook(Varien_Event_Observer $observer)
     {
         $storeId = Mage::getModel('core/store')->load($observer->getEvent()->getStore())->getId();
