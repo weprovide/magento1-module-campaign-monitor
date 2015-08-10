@@ -184,21 +184,4 @@ class Weprovide_CampaignMonitor_Model_Api_Webhooks extends Weprovide_CampaignMon
 
         return false;
     }
-
-    /**
-     * Parse webhook json
-     * @param $jsonData
-     * @return mixed
-     * @throws Exception
-     */
-    public function parseJsonWebhook($jsonData)
-    {
-        $parsedData = Mage::helper('core')->jsonDecode($jsonData);
-        if(isset($parsedData['ListID']) && isset($parsedData['Events'])) {
-            return $parsedData;
-        } else {
-            throw new Exception('Webhook data not valid: ' . $jsonData);
-        }
-    }
-
 }

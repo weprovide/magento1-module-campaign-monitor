@@ -77,4 +77,20 @@ class Weprovide_CampaignMonitor_Helper_Data extends Mage_Core_Helper_Abstract
         return true;
     }
 
+    /**
+     * Parse webhook json
+     * @param $jsonData
+     * @return mixed
+     * @throws Exception
+     */
+    public function parseJsonWebhook($jsonData)
+    {
+        $parsedData = Mage::helper('core')->jsonDecode($jsonData);
+        if(isset($parsedData['ListID']) && isset($parsedData['Events'])) {
+            return $parsedData;
+        } else {
+            throw new Exception('Webhook data not valid: ' . $jsonData);
+        }
+    }
+
 }
