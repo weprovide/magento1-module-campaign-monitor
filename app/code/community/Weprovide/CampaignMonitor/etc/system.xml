@@ -7,7 +7,7 @@
         </weprovide>
     </tabs>
     <sections>
-        <campaignmonitor  translate="label" module="campaignmonitor">
+        <campaignmonitor translate="label" module="campaignmonitor">
             <label>Campaign Monitor</label>
             <tab>weprovide</tab>
             <frontend_type>text</frontend_type>
@@ -60,6 +60,25 @@
                         </subscribe_list_api_key>
                     </fields>
                 </configuration>
+                <advanced_configuration translate="label">
+                    <label>Advanced Configuration</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>1</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <webhook_base_url translate="label">
+                            <label>Webhook base domain url</label>
+                            <comment>Used for local testing. Example url: http://www.example.com (without ending /)</comment>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>10</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </webhook_base_url>
+                    </fields>
+                </advanced_configuration>
             </groups>
         </campaignmonitor>
     </sections>

@@ -12,6 +12,7 @@ class Weprovide_CampaignMonitor_Model_Setting
     const XML_API_KEY = 'campaignmonitor/configuration/api_key';
     const XML_CLIENT_ID = 'campaignmonitor/configuration/client_id';
     const XML_SUBSCRIBE_LIST_API_KEY = 'campaignmonitor/configuration/subscribe_list_api_key';
+    const XML_WEBHOOK_BASE_URL = 'campaignmonitor/advanced_configuration/webhook_base_url';
     const CUSTOM_FIELD_SUBSCRIBER_ID = 'MagentoSubscriberId';
     const CUSTOM_FIELD_SUBSCRIBER_CONFIRM_CODE = 'MagentoSubscriberConfirmCode';
     const IMPORT_SUBSCRIBER_LIMIT = 1000;
@@ -51,6 +52,15 @@ class Weprovide_CampaignMonitor_Model_Setting
     public function getSubscribeListApiKey($storeId = 0)
     {
         return Mage::getStoreConfig(self::XML_SUBSCRIBE_LIST_API_KEY, $storeId);
+    }
+
+    /**
+     * @param int $storeId
+     * @return mixed
+     */
+    public function getWebhookBaseUrl($storeId = 0)
+    {
+        return Mage::getStoreConfig(self::XML_WEBHOOK_BASE_URL, $storeId);
     }
 
 }

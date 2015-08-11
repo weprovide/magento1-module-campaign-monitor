@@ -93,4 +93,29 @@ class Weprovide_CampaignMonitor_Helper_Data extends Mage_Core_Helper_Abstract
         }
     }
 
+    /**
+     * Check if webhook exists based on url
+     * @param $url
+     * @param $listId
+     * @param int $storeId
+     * @return bool
+     * @throws Exception
+     */
+    public function webhookExists($url, $listId, $storeId = 0)
+    {
+        $webhooks = Mage::getModel('campaignmonitor/api_webhooks')->getWebhooks($listId, $storeId)->response;
+        if (isset($webhooks)) {
+            foreach ($webhooks as $webhook) {
+                if (isset($webhook->Url)) {
+                    if ($webhook->Url == $url) {
+                        return true;
+                    }
+                }
+            }
+        } else {
+            throw new Exception('Error loading webhooks');
+        }
+
+        return false;
+    }
 }

@@ -160,28 +160,61 @@ class Weprovide_CampaignMonitor_Model_Api_Webhooks extends Weprovide_CampaignMon
     }
 
     /**
-     * Check if webhook exists based on url
-     * @param $url
-     * @param $listId
-     * @param int $storeId
-     * @return bool
+     * Subscribe based on incoming webhook
+     * @param $emailAddress
+     * @param $state
      * @throws Exception
      */
-    public function webhookExists($url, $listId, $storeId = 0)
+    public function newsletterSubscribe($emailAddress, $state)
     {
-        $webhooks = $this->getWebhooks($listId, $storeId)->response;
-        if (isset($webhooks)) {
-            foreach ($webhooks as $webhook) {
-                if (isset($webhook->Url)) {
-                    if ($webhook->Url == $url) {
-                        return true;
-                    }
-                }
+        $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($emailAddress);
+        if($subscriber->getId()) {
+            $subscriber->setSubscriberStatus(1);
+            if($state == null) {
+                $subscriber->setCampaignMonitorState('');
+            } else {
+                $subscriber->setCampaignMonitorState($state);
             }
         } else {
-            throw new Exception('Error loading webhooks');
+            Mage::getModel('newsletter/subscriber')->subscribe($emailAddress);
+            $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($emailAddress);
+            if($subscriber->getId()) {
+                $subscriber->setCampaignMonitorState($state);
+            }
         }
+        $subscriber->save();
+    }
 
-        return false;
+    /**
+     * Update based on incoming webhook
+     * @param $emailAddress
+     * @param $state
+     * @throws Exception
+     */
+    public function newsletterUpdate($emailAddress, $state)
+    {
+        $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($emailAddress);
+        if($subscriber->getId()) {
+            $subscriber->setCampaignMonitorState($state);
+        }
+        $subscriber->save();
+    }
+
+    /**
+     * Deactivate based on incoming webhook
+     * @param $emailAddress
+     * @param $state
+     * @throws Exception
+     */
+    public function newsletterDeactivate($emailAddress, $state)
+    {
+        $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($emailAddress);
+        if($subscriber->isSubscribed() && $subscriber->getId()) {
+            $subscriber->setCampaignMonitorState($state);
+            $subscriber->unsubscribe();
+        } else {
+            Mage::Log('Could not unsubscribe: ' . $emailAddress, null, 'campaignmonitor.log');
+        }
+        $subscriber->save();
     }
 }
