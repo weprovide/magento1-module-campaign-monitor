@@ -62,10 +62,16 @@ class Weprovide_CampaignMonitor_Model_Observer_Config
         $apiWebhooks = Mage::getModel('campaignmonitor/api_webhooks');
         if ($listId) {
             try {
-                $url = Mage::getUrl('campaignmonitor/webhook');
+                $url = Mage::getModel('campaignmonitor/setting')->getWebhookBaseUrl($storeId);
+                if(isset($url) && $url != '') {
+                    $url .= '/campaignmonitor/webhook';
+                } else {
+                    $url = Mage::getUrl('campaignmonitor/webhook');
+                }
+
                 $types = array('subscribe', 'update', 'deactivate');
 
-                if(!$apiWebhooks->webhookExists($url, $listId, $storeId)) {
+                if(!Mage::helper('campaignmonitor')->webhookExists($url, $listId, $storeId)) {
                     $apiWebhooks->createWebhook($listId, $url, $storeId, $types, 'json');
                 }
             } catch (Exception $e) {

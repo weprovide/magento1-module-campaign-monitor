@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Class Weprovide_CampaignMonitor_WebhookController
+ *
+ * @author Tim Neutkens <tim@weprovide.com>
+ * @copyright Copyright (c) 2015, We/Provide http://www.weprovide.com
+ */
 class Weprovide_CampaignMonitor_WebhookController extends Mage_Core_Controller_Front_Action
 {
     /**
@@ -26,22 +32,22 @@ class Weprovide_CampaignMonitor_WebhookController extends Mage_Core_Controller_F
             foreach($events as $event) {
                 $eventType = $event['Type'];
                 $emailAddress = $event['EmailAddress'];
+                $state = Mage::helper('campaignmonitor')->escapeHtml($event['State']);
 
                 if(isset($eventType) && isset($emailAddress)) {
-                    if($eventType == 'Deactivate') {
-                        $subscriber = Mage::getModel('newsletter/subscriber')->loadByEmail($emailAddress);
-                        if($subscriber->isSubscribed() && $subscriber->getId()) {
-                            $state = Mage::helper('campaignmonitor')->escapeHtml($event['State']);
-                            if(isset($state)) {
-                                $subscriber->setCampaignMonitorState($state);
-                            } else {
-                                Mage::Log('State is not set', null, 'campaignmonitor.log');
-                            }
-                            $subscriber->unsubscribe();
-                        } else {
-                            Mage::Log('Could not unsubscribe: ' . $emailAddress, null, 'campaignmonitor.log');
-                        }
+
+                    if($eventType == 'Subscribe') {
+                        Mage::getModel('campaignmonitor/api_webhooks')->newsletterSubscribe($emailAddress, $state);
                     }
+
+                    if($eventType == 'Update') {
+                        Mage::getModel('campaignmonitor/api_webhooks')->newsletterUpdate($emailAddress, $state);
+                    }
+
+                    if($eventType == 'Deactivate') {
+                        Mage::getModel('campaignmonitor/api_webhooks')->newsletterDeactivate($emailAddress, $state);
+                    }
+
                 } else {
                     Mage::Log('Type is not set', null, 'campaignmonitor.log');
                 }
