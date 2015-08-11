@@ -17,6 +17,13 @@
         </routers>
     </frontend>
     <global>
+        <blocks>
+            <adminhtml>
+                <rewrite>
+                    <newsletter_subscriber_grid>Weprovide_CampaignMonitor_Block_Adminhtml_Newsletter_Subscriber_Grid</newsletter_subscriber_grid>
+                </rewrite>
+            </adminhtml>
+        </blocks>
         <helpers>
             <campaignmonitor>
                 <class>Weprovide_CampaignMonitor_Helper</class>
