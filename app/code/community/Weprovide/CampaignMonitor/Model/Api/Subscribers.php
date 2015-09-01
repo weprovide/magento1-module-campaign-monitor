@@ -111,16 +111,6 @@ class Weprovide_CampaignMonitor_Model_Api_Subscribers
                 $subscriber['Name'] = $item->getCustomerFirstname() . ' ' . $item->getCustomerLastname();
             }
 
-            $subscriber['CustomFields'][] = array(
-                'key' => Weprovide_CampaignMonitor_Model_Setting::CUSTOM_FIELD_SUBSCRIBER_ID,
-                'Value' => $item->getSubscriberId()
-            );
-
-            $subscriber['CustomFields'][] = array(
-                'key' => Weprovide_CampaignMonitor_Model_Setting::CUSTOM_FIELD_SUBSCRIBER_CONFIRM_CODE,
-                'Value' => $item->getSubscriberConfirmCode()
-            );
-
             $subscribers[] = $subscriber;
             $subscriberIds[] = $item->getSubscriberId();
         }
