@@ -10,25 +10,21 @@ class Weprovide_CampaignMonitor_Model_Observer_Config
 {
 
     /**
-     * initDefaultCustomFields
+     * @param Varien_Event_Observer $observer
      */
-    public function initDefaultCustomFields(Varien_Event_Observer $observer)
+    public function checkApiData(Varien_Event_Observer $observer)
     {
-        $storeId = Mage::getModel('core/store')->load($observer->getEvent()->getStore())->getId();
-        $apiLists = Mage::getModel('campaignmonitor/api_lists');
+        if($observer->getEvent()->getObject()->getSection() && $observer->getEvent()->getObject()->getSection() == 'campaignmonitor') {
+            $groups = $observer->getEvent()->getObject()->getGroups();
+            $apiKey = $groups['configuration']['fields']['api_key']['value'];
 
-        try {
-            $apiLists->createCustomField(Weprovide_CampaignMonitor_Model_Setting::CUSTOM_FIELD_SUBSCRIBER_ID, CS_REST_CUSTOM_FIELD_TYPE_TEXT, $storeId);
-        } catch (Exception $e) {
-            Mage::log($e->getMessage(), NULL, 'campaignmonitor.log');
+            if(!Mage::getModel('campaignmonitor/api_general')->checkKey($apiKey)){
+                $groups['configuration']['fields']['api_key']['value'] = '';
+                $observer->getEvent()->getObject()->setGroups($groups);
+                Mage::getSingleton('core/session')->addError('Wrong API Key :(');
+            }
+
         }
-
-        try {
-            $apiLists->createCustomField(Weprovide_CampaignMonitor_Model_Setting::CUSTOM_FIELD_SUBSCRIBER_CONFIRM_CODE, CS_REST_CUSTOM_FIELD_TYPE_TEXT, $storeId);
-        } catch (Exception $e) {
-            Mage::log($e->getMessage(), NULL, 'campaignmonitor.log');
-        }
-
     }
 
     /**
@@ -79,4 +75,5 @@ class Weprovide_CampaignMonitor_Model_Observer_Config
             }
         }
     }
+
 }

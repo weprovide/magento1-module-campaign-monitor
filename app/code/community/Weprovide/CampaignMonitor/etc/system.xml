@@ -2,16 +2,17 @@
 <config>
     <tabs>
         <weprovide translate="label" module="campaignmonitor">
-            <label>We/Provide</label>
-            <sort_order>0</sort_order>
+            <label><![CDATA[<img src="//www.weprovide.com/assets/themes/weprovide/dist/images/logo/weprovide-logo-small.svg" alt="We/Provide" height="18" style="vertical-align:bottom;margin-left:-1px; padding: 1px;"/> We/Provide]]></label>
+            <sort_order>200</sort_order>
         </weprovide>
     </tabs>
     <sections>
-        <campaignmonitor translate="label" module="campaignmonitor">
+        <campaignmonitor  translate="label" module="campaignmonitor">
+            <class>separator-top</class>
             <label>Campaign Monitor</label>
             <tab>weprovide</tab>
             <frontend_type>text</frontend_type>
-            <sort_order>0</sort_order>
+            <sort_order>20</sort_order>
             <show_in_default>1</show_in_default>
             <show_in_website>1</show_in_website>
             <show_in_store>1</show_in_store>
@@ -36,6 +37,7 @@
                         <api_key translate="label">
                             <label>API KEY</label>
                             <frontend_type>text</frontend_type>
+                            <validate>required-entry</validate>
                             <sort_order>20</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -43,7 +45,8 @@
                         </api_key>
                         <client_id translate="label">
                             <label>ClIENT ID</label>
-                            <frontend_type>text</frontend_type>
+                            <frontend_type>select</frontend_type>
+                            <source_model>Weprovide_CampaignMonitor_Model_Config_Source_ClientLists</source_model>
                             <sort_order>30</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -52,7 +55,6 @@
                         <subscribe_list_api_key translate="label">
                             <label>Choose a subscribe list</label>
                             <frontend_type>select</frontend_type>
-                            <source_model>Weprovide_CampaignMonitor_Model_Config_Source_SubscribeLists</source_model>
                             <sort_order>40</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>

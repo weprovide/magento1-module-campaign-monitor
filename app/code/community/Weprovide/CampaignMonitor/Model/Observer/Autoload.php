@@ -8,6 +8,7 @@
  */
 class Weprovide_CampaignMonitor_Model_Observer_Autoload
 {
+
     /**
      * autoLoad
      */
@@ -22,6 +23,7 @@ class Weprovide_CampaignMonitor_Model_Observer_Autoload
     static function init()
     {
         $campaignMonitorLibrary = Mage::getBaseDir('lib') . '/CampaignMonitor/';
+        require_once($campaignMonitorLibrary . 'csrest_general.php');
         require_once($campaignMonitorLibrary . 'csrest_subscribers.php');
         require_once($campaignMonitorLibrary . 'csrest_clients.php');
         require_once($campaignMonitorLibrary . 'csrest_lists.php');
