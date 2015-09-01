@@ -4,5 +4,15 @@ app/etc/modules/Weprovide_Campaignmonitor.xml app/etc/modules/Weprovide_Campaign
 #module code
 app/code/community/Weprovide/CampaignMonitor app/code/community/Weprovide/CampaignMonitor
 
+#module admin design
+app/design/adminhtml/default/default/layout/weprovide app/design/adminhtml/default/default/layout/weprovidels
+app/design/adminhtml/default/default/template/campaignmonitor/jsinit.phtml app/design/adminhtml/default/default/template/campaignmonitor/jsinit.phtml
+
 #module libraries
 lib/CampaignMonitor lib/CampaignMonitor
+
+#module js libraries
+js/mage/adminhtml/campaignmonitor js/mage/adminhtml/campaignmonitor
+
+#module skin
+skin/adminhtml/default/default/images/campaignmonitor/loader.gif skin/adminhtml/default/default/images/campaignmonitor/loader.gif
