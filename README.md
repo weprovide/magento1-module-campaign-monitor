@@ -38,7 +38,7 @@ Licence
 Authors
 -------
 * Lex Beelen
-* [Follow me on github!](https://github.com/lexperts)
+* [Follow me on github!](https://github.com/lexbeelen)
 
 * Tim Neutkens
 * [Follow me on github!](https://github.com/timneutkens1)
