@@ -140,9 +140,9 @@
     <adminhtml>
         <layout>
             <updates>
-                <aoe_scheduler>
+                <campaignmonitor>
                     <file>weprovide/campaignmonitor.xml</file>
-                </aoe_scheduler>
+                </campaignmonitor>
             </updates>
         </layout>
     </adminhtml>
